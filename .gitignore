@@ -1,0 +1,8 @@
+**/*.jar
+**/target
+**/data
+**/.mvn
+**/.settings
+**/.classpath
+**/.project
+**/nb*.xml
