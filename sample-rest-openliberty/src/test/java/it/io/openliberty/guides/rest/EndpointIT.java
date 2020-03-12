@@ -12,17 +12,14 @@
  // end::comment[]
 package it.io.openliberty.guides.rest;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Properties;
-
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class EndpointIT {
@@ -32,7 +29,7 @@ public class EndpointIT {
     // tag::test[]
     @Test
     // end::test[]
-    public void testGetProperties() {
+    public void testPing() {
         // tag::systemProperties[]
         String port = System.getProperty("http.port");
         String context = System.getProperty("context.root");
@@ -44,7 +41,7 @@ public class EndpointIT {
         // end::clientSetup[]
 
         // tag::target[]
-        WebTarget target = client.target(url + "System/properties");
+        WebTarget target = client.target(url + "/ping");
         // end::target[]
         // tag::requestget[]
         Response response = target.request().get();
@@ -56,13 +53,12 @@ public class EndpointIT {
         // end::assertequals[]
 
         // tag::body[]
-        String json = response.readEntity(String.class);
-        Properties sysProps = jsonb.fromJson(json, Properties.class);
+        String msg = response.readEntity(String.class);
 
         // tag::assertosname[]
-        assertEquals("The system property for the local and remote JVM should match",
-                     System.getProperty("os.name"),
-                     sysProps.getProperty("os.name"));
+        assertEquals("no se obtuvo el texto",
+                     "Hola",
+                     msg);
         // end::assertosname[]
         // end::body[]
         response.close();

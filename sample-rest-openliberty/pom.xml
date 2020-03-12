@@ -1,10 +1,7 @@
-<?xml version='1.0' encoding='utf-8'?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="utf-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.apuntesdejava.openliberty</groupId>
+    <groupId>com.apuntesdejava.openliberty</groupId> 
     <artifactId>sample-rest-openliberty</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -16,7 +13,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <!-- Plugin versions -->
-        <version.liberty-maven-plugin>3.1</version.liberty-maven-plugin>
+        <version.liberty-maven-plugin>3.2</version.liberty-maven-plugin>
         <version.maven-failsafe-plugin>2.22.2</version.maven-failsafe-plugin>
         <version.maven-surefire-plugin>2.22.2</version.maven-surefire-plugin>
         <version.maven-war-plugin>3.2.3</version.maven-war-plugin>
@@ -28,7 +25,7 @@
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
         <!-- end::defaultHttpsPort[] -->
         <!-- tag::appContextRoot[] -->
-        <liberty.var.app.context.root>LibertyProject</liberty.var.app.context.root>
+        <liberty.var.app.context.root>sample-rest-openliberty</liberty.var.app.context.root>
         <!-- end::appContextRoot[] -->
     </properties>
 
@@ -38,6 +35,12 @@
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-web-api</artifactId>
             <version>8.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
             <scope>provided</scope>
         </dependency>
         <!-- For tests -->
@@ -72,6 +75,21 @@
             <version>2.3.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-moxy</artifactId>
+            <version>2.5.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,6 +100,12 @@
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${version.liberty-maven-plugin}</version>
+                 <configuration>
+                  <!--  <installDirectory>c:/opt/wlp</installDirectory>
+                    <serverName>test</serverName> -->
+                     <copyLibsDirectory>true</copyLibsDirectory>
+                    
+                </configuration> 
             </plugin>
             <!-- Plugin to run functional tests -->
             <plugin>
@@ -108,6 +132,26 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${version.maven-surefire-plugin}</version>
             </plugin>
+            <!-- plugin add h2   -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-h2-dependency</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>h2</includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/resources/</outputDirectory>  
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
     <name>sample-rest-openliberty</name>

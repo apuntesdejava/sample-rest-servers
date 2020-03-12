@@ -8,12 +8,16 @@
     </featureManager>
     <!-- end::featureManager[] -->
 
-    <!-- tag::httpEndpoint[] -->
-    <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
-                  id="defaultHttpEndpoint" host="*" />
-    <!-- end::httpEndpoint[] -->
-  
-    <!-- tag::webApplication[] -->
-    <webApplication location="guide-rest-intro.war" contextRoot="${app.context.root}"/>
-    <!-- end::webApplication[] -->
+    <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint" host="*" />
+    <webApplication location="sample-rest-openliberty.war" contextRoot="${app.context.root}" />
+
+
+    <library id="h2JDBCLib">
+        <fileset dir="${shared.resource.dir}" includes="h2*.jar" />
+    </library>
+    <!-- Datasource Configuration -->
+    <dataSource id="jpadatasource" jndiName="jdbc/sample">
+        <jdbcDriver libraryRef="h2JDBCLib" />
+        <properties url="jdbc:h2:file:./data/sample"    />
+    </dataSource>  
 </server>

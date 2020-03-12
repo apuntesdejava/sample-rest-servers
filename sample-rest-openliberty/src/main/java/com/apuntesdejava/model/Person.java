@@ -24,8 +24,10 @@ import javax.persistence.Id;
 
 @Entity
 public class Person implements Serializable {
+ 
+	private static final long serialVersionUID = -2795152842767108014L;
 
-    @Id
+	@Id
     @GeneratedValue(strategy = IDENTITY)
     private long personId;
 
@@ -38,7 +40,7 @@ public class Person implements Serializable {
         created = LocalDateTime.now();
     }
 
-    public Person(String firstName, String lastName, String email) {
+    public Person(final String firstName, final String lastName, final String email) {
         this();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,7 +51,7 @@ public class Person implements Serializable {
         return personId;
     }
 
-    public void setPersonId(long personId) {
+    public void setPersonId(final long personId) {
         this.personId = personId;
     }
 
@@ -57,7 +59,7 @@ public class Person implements Serializable {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -65,7 +67,7 @@ public class Person implements Serializable {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
@@ -73,7 +75,7 @@ public class Person implements Serializable {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -81,7 +83,7 @@ public class Person implements Serializable {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(final LocalDateTime created) {
         this.created = created;
     }
 
