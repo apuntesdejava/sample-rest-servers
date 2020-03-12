@@ -4,5 +4,7 @@
 **/.mvn
 **/.settings
 **/.classpath
+**/.factorypath
 **/.project
 **/nb*.xml
+**/.vscode
