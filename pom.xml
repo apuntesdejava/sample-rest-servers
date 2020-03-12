@@ -9,6 +9,7 @@
         <module>sample-rest-openliberty</module>
         <module>sample-rest-payara</module>
         <module>sample-rest-quarkus</module>
+        <module>sample-rest-thorntail</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
