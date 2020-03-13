@@ -1,0 +1,19 @@
+server:
+  port: 8080
+javax:
+  sql:
+    DataSource:
+      sampleDataSource1:
+        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        dataSource:
+          url: jdbc:h2:file:./data/sample
+          user: sa
+          password: 
+      sampleDataSource:
+        dataSourceClassName: com.mysql.cj.jdbc.MysqlDataSource
+        dataSource:
+          url: jdbc:mysql://localhost/sample
+          user: sample
+          password: sample
+          serverTimezone: America/Lima
+          useSSL: false

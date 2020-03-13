@@ -10,7 +10,8 @@
         <module>sample-rest-payara</module>
         <module>sample-rest-quarkus</module>
         <module>sample-rest-thorntail</module>
-    </modules>
+    <module>sample-rest-helidon</module>
+  </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
