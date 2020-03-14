@@ -11,7 +11,8 @@
         <module>sample-rest-quarkus</module>
         <module>sample-rest-thorntail</module>
     <module>sample-rest-helidon</module>
-  </modules>
+        <module>sample-rest-kumuluzee</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

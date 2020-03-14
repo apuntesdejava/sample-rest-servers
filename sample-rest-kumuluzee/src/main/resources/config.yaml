@@ -1,0 +1,10 @@
+kumuluzee:
+  datasources:
+    - jndi-name: jdbc/SampleDS
+      driver-class: org.h2.Driver
+      connection-url: jdbc:h2:file:./data/sample
+      username: sa
+      password: 
+      pool:
+        auto-commit: true
+        flush-on-close: false 
