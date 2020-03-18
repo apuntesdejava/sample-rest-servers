@@ -12,12 +12,12 @@
     <webApplication location="sample-rest-openliberty.war" contextRoot="${app.context.root}" />
 
 
-    <library id="h2JDBCLib">
-        <fileset dir="${shared.resource.dir}" includes="h2*.jar" />
+    <library id="MySQLLib">
+        <fileset dir="${shared.resource.dir}" includes="mysql*.jar" />
     </library>
     <!-- Datasource Configuration -->
     <dataSource id="jpadatasource" jndiName="jdbc/sample">
-        <jdbcDriver libraryRef="h2JDBCLib" />
-        <properties url="jdbc:h2:file:./data/sample"    />
+        <jdbcDriver libraryRef="MySQLLib" />
+        <properties url="jdbc:mysql://localhost/sample?serverTimezone=America/Lima&amp;useSSL=false"    user="sample" password="sample"/>
     </dataSource>  
 </server>

@@ -1,6 +1,6 @@
 # Run
 ```
-mvn mvn clean liberty:create package liberty:run
+mvn clean liberty:create package liberty:run
 ```
 
 

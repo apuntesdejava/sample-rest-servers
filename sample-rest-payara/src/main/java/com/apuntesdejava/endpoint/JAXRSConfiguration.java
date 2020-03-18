@@ -6,9 +6,11 @@ import javax.ws.rs.core.Application;
 
 @DataSourceDefinition(
         name = "java:app/MyApp/MyDS",
-        className = "org.h2.jdbcx.JdbcDataSource",
-        url = "jdbc:h2:file:./data/sample",
-        properties = {"fish.payara.log-jdbc-calls=true"}
+        className = "com.mysql.cj.jdbc.MysqlDataSource",
+        url = "jdbc:mysql://localhost/sample",
+        user = "sample",
+        password = "sample",
+        properties = {"fish.payara.log-jdbc-calls=true","serverTimezone=America/Lima","useSSL=false"}
 )
 @ApplicationPath("/")
 public class JAXRSConfiguration extends Application {

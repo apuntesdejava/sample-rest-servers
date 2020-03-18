@@ -37,12 +37,6 @@
             <version>8.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
-            <scope>provided</scope>
-        </dependency>
         <!-- For tests -->
         <dependency>
             <groupId>junit</groupId>
@@ -90,6 +84,11 @@
             <artifactId>jersey-media-moxy</artifactId>
             <version>2.5.1</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.19</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -132,20 +131,20 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${version.maven-surefire-plugin}</version>
             </plugin>
-            <!-- plugin add h2   -->
+            <!-- plugin add mysql   -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>3.1.1</version>
                 <executions>
                     <execution>
-                        <id>copy-h2-dependency</id>
+                        <id>copy-mysql-dependency</id>
                         <phase>package</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <includeArtifactIds>h2</includeArtifactIds>
+                            <includeArtifactIds>mysql-connector-java</includeArtifactIds>
                             <outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/resources/</outputDirectory>  
                         </configuration>
                     </execution>
