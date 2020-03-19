@@ -11,3 +11,4 @@ javax:
           password: sample
           serverTimezone: America/Lima
           useSSL: false
+          allowPublicKeyRetrieval: true

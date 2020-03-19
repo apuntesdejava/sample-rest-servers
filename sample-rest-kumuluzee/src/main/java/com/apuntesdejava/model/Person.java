@@ -19,14 +19,14 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 
 @Entity
 public class Person implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     private long personId;
 
     private String firstName;

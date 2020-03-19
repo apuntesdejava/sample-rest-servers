@@ -18,6 +18,6 @@
     <!-- Datasource Configuration -->
     <dataSource id="jpadatasource" jndiName="jdbc/sample">
         <jdbcDriver libraryRef="MySQLLib" />
-        <properties url="jdbc:mysql://localhost/sample?serverTimezone=America/Lima&amp;useSSL=false"    user="sample" password="sample"/>
+        <properties url="jdbc:mysql://localhost/sample?serverTimezone=America/Lima&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"    user="sample" password="sample"/>
     </dataSource>  
 </server>

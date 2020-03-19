@@ -18,7 +18,6 @@ package com.apuntesdejava.repository;
 import com.apuntesdejava.model.Person;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -34,11 +33,11 @@ import javax.transaction.Transactional;
 @ApplicationScoped
 public class PersonRepository {
 
-    @Inject
+//    @Inject
     @PersistenceContext
     private EntityManager em;
 
-    @Transactional
+    @Transactional(Transactional.TxType.REQUIRED)
     public Person create(String firstName, String lastName, String email) {
         Person p = new Person(firstName, lastName, email);
         em.persist(p);

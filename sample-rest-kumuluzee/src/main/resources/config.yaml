@@ -1,10 +1,12 @@
 kumuluzee:
   datasources:
     - jndi-name: jdbc/SampleDS
-      driver-class: com.mysql.cj.jdbc.MysqlDataSource
-      connection-url: jdbc:mysql://localhost/sample?serverTimezone=America/Lima&useSSL=false
+      driver-class: com.mysql.cj.jdbc.Driver
+      datasource-class: com.mysql.cj.jdbc.MysqlDataSource
+      connection-url: jdbc:mysql://localhost/sample?useSSL=false&serverTimezone=America/Lima&allowPublicKeyRetrieval=true
       username: sample
       password: sample
+          
       pool:
         auto-commit: true
-        flush-on-close: false 
+        flush-on-close: true
